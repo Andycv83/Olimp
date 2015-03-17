@@ -30,15 +30,18 @@ public class Olimpiad {
 		return tasks;
 	}
 	
-	public void setTasks(Set<Task> tasks) {
-		this.tasks = tasks;
-	}
-	
+public void setTasks(Set<Task> tasks) {
+	this.tasks = tasks;
+}
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public void addTask(Task t){
+		tasks.add(t);
 	}
 }	
 

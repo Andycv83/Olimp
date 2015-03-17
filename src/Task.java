@@ -11,7 +11,11 @@ public class Task {
 	private String description;	
 	private Level level;
 	
-	 public Level getLevel() {
+	public Task(String description) {
+		this.description=description;
+	} 
+	
+	public Level getLevel() {
 		return level;
 	}
 	 
