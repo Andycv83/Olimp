@@ -6,28 +6,28 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlType(propOrder = {"id", "description"})
 
+//enum Level {
+//	beginer,
+//	expert		
+//}; 
+
 public class Task {
 	
-	
-	public static enum Level {
-		beginer,
-		expert		
-	}; 
 	private int id;
-	private int olimpId;	
+//	private int olimpId;	
 	private String description;	
-	private Level level;
+//	private Level level;
 	
-	@XmlElement(name = "description")
+	@XmlElement(name = "question")
 	
-	public Level getLevel() {
+/*	public Level getLevel() {
 		return level;
 	}
 	 
 	 public void setLevel(Level level) {
 		this.level = level;
 	}
-	 
+	 */
 	 public String getDescription() {
 		return description;
 	}
@@ -40,11 +40,12 @@ public class Task {
 	 public void setId(int id) {
 		this.id = id;
 	}
-	 public int getOlimpId() {
+/*	 public int getOlimpId() {
 		return olimpId;
 	}
 	 public void setOlimpId(int olimpId) {
 		this.olimpId = olimpId;
 	}
+	*/
 }
 

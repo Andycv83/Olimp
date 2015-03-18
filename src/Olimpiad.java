@@ -10,10 +10,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Olimpiad {
 	
 	  // XmLElementWrapper generates a wrapper element around XML representation
-	  @XmlElementWrapper(name = "tasks")
+	  @XmlElementWrapper(name = "Olimpiad")
 	  
 	  // XmlElement sets the name of the entities
-	  @XmlElement(name = "task")
+//	  @XmlElement(name = "Olimpiad")
 	  
 	  
 	private String name;

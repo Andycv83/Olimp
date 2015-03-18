@@ -12,7 +12,7 @@ import javax.xml.bind.Unmarshaller;
 
 public class Main {
 	
-	private static final String QUESTION_XML = "D:/workspace/Olimp/question.xml";
+	private static final String QUESTION_XML = "C:/Users/amendtc/workspace/Olimp/file/Olimp/question.xml";
 
 	public static void main(String[] args) throws JAXBException, FileNotFoundException {
 		// TODO Auto-generated method stub
@@ -22,7 +22,7 @@ public class Main {
 		
 		Task task1= new Task();
 		task1.setId(1);
-		task1.setDescription("First task for begginer");
+		task1.setDescription("First task for begginer ");
 		firstQuestion.add(task1);
 		
 		Task task2= new Task();
@@ -32,7 +32,7 @@ public class Main {
 		
 		Task task3= new Task();
 		task1.setId(3);
-		task1.setDescription("Third task for begginer");
+		task1.setDescription("Third task for begginer wwwwwwwwww");
 		firstQuestion.add(task3);
 		
 		Olimpiad biology = new Olimpiad();
@@ -45,17 +45,17 @@ public class Main {
 		else 
 			System.out.println("file not found");
 		
-		  JAXBContext context = JAXBContext.newInstance(Olimpiad.class);
+		  JAXBContext context = JAXBContext.newInstance(Task.class);
 		    Marshaller marsh = context.createMarshaller();
 		    marsh.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 		    
 		    // Write to System.out
-//		    marsh.marshal(biology, System.out);
+		    marsh.marshal(task1, System.out);
 
 		    // Write to File
-//		    marsh.marshal(biology, new File(QUESTION_XML));
+		    marsh.marshal(task1, new File(QUESTION_XML));
 		    
-		    System.out.println();
+/*		    System.out.println();
 		    System.out.println("Output from our XML File: ");
 		    Unmarshaller um = context.createUnmarshaller();
 		    biology = (Olimpiad) um.unmarshal(new FileReader(QUESTION_XML));
@@ -66,5 +66,6 @@ public class Main {
 		      System.out.println("Task: " + t.getId() + "  "
 		          + t.getDescription());
 		    }
+		    */
 	}
 }
