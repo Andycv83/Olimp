@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Question for Olimpiada -->
+<question>
+  <id>1 </id>
+  <description>ƒайте ответ на вопрос номер один </description>
+</question> 
+<question>
+  <id>2 </id>
+  <description>вопрос номер два </description>
+</question> 
+<question>
+  <id>3 </id>
+  <description>≈ще вопрос номер которого три </description>
+</question> 

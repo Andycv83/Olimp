@@ -1,7 +1,21 @@
 import java.util.Date;
 import java.util.Set;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(namespace = "D:/workspace/Olimp/")
+
 public class Olimpiad {
+	
+	  // XmLElementWrapper generates a wrapper element around XML representation
+	  @XmlElementWrapper(name = "tasks")
+	  
+	  // XmlElement sets the name of the entities
+	  @XmlElement(name = "task")
+	  
+	  
 	private String name;
 	private Date start;
 	private Date end;

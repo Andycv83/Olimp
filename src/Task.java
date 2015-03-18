@@ -1,3 +1,10 @@
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlRootElement(name = "task")
+
+@XmlType(propOrder = {"id", "description"})
 
 public class Task {
 	
@@ -11,9 +18,7 @@ public class Task {
 	private String description;	
 	private Level level;
 	
-	public Task(String description) {
-		this.description=description;
-	} 
+	@XmlElement(name = "description")
 	
 	public Level getLevel() {
 		return level;
