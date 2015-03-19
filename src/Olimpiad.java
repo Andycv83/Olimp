@@ -5,22 +5,21 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(namespace = "D:/workspace/Olimp/")
+@XmlRootElement(name = "Olimpiada")
 
 public class Olimpiad {
 	
 	  // XmLElementWrapper generates a wrapper element around XML representation
-	  @XmlElementWrapper(name = "Olimpiad")
+	 @XmlElementWrapper(name = "TTTTTTTTTTTTTTTTTTTTTTTTTTT")
 	  
 	  // XmlElement sets the name of the entities
-//	  @XmlElement(name = "Olimpiad")
+ //  @XmlElement(name = "task")
 	  
-	  
+	private Set <Task> taskList ;  
 	private String name;
 	private Date start;
 	private Date end;
 	private int id;
-	private Set <Task> tasks ;
 	
 	public String getName() {
 		return name;
@@ -40,12 +39,12 @@ public class Olimpiad {
 	public void setStart(Date start) {
 		this.start = start;
 	}
-	public Set<Task> getTasks() {
-		return tasks;
+	public Set<Task> getTasksList() {
+		return taskList;
 	}
 	
-public void setTasks(Set<Task> tasks) {
-	this.tasks = tasks;
+public void setTasksList(Set<Task> taskList) {
+	this.taskList = taskList;
 }
 	public int getId() {
 		return id;
@@ -55,7 +54,7 @@ public void setTasks(Set<Task> tasks) {
 	}
 	
 	public void addTask(Task t){
-		tasks.add(t);
+		taskList.add(t);
 	}
 }	
 

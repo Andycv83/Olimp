@@ -12,32 +12,32 @@ import javax.xml.bind.Unmarshaller;
 
 public class Main {
 	
-	private static final String QUESTION_XML = "C:/Users/amendtc/workspace/Olimp/file/Olimp/question.xml";
+	private static final String QUESTION_XML = "D:/workspace/Olimp/question.xml";
 
 	public static void main(String[] args) throws JAXBException, FileNotFoundException {
 		// TODO Auto-generated method stub
 
 				
-		Set <Task> firstQuestion = new HashSet <Task>();
+		Set <Task> newTasks = new HashSet <Task>();
 		
-		Task task1= new Task();
+		Olimpiad biology = new Olimpiad();
+		biology.setName("Biology");		
+		biology.setTasksList(newTasks);
+		
+		Task task1= new Task();		
 		task1.setId(1);
 		task1.setDescription("First task for begginer ");
-		firstQuestion.add(task1);
+		newTasks.add(task1);
 		
 		Task task2= new Task();
 		task1.setId(2);
 		task1.setDescription("Second task for begginer");
-		firstQuestion.add(task2);
+		newTasks.add(task2);
 		
 		Task task3= new Task();
 		task1.setId(3);
 		task1.setDescription("Third task for begginer wwwwwwwwww");
-		firstQuestion.add(task3);
-		
-		Olimpiad biology = new Olimpiad();
-		biology.setName("Biology");		
-		biology.setTasks(firstQuestion);
+		newTasks.add(task3);
 		
 		if(new File(QUESTION_XML).exists()){
 			System.out.println("file question is present ");
@@ -45,27 +45,27 @@ public class Main {
 		else 
 			System.out.println("file not found");
 		
-		  JAXBContext context = JAXBContext.newInstance(Task.class);
+		  JAXBContext context = JAXBContext.newInstance(Olimpiad.class);
 		    Marshaller marsh = context.createMarshaller();
 		    marsh.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 		    
 		    // Write to System.out
-		    marsh.marshal(task1, System.out);
+		    marsh.marshal(biology, System.out);
 
 		    // Write to File
-		    marsh.marshal(task1, new File(QUESTION_XML));
+	//	    marsh.marshal(biology, new File(QUESTION_XML));
 		    
-/*		    System.out.println();
+	/*	    System.out.println();
 		    System.out.println("Output from our XML File: ");
 		    Unmarshaller um = context.createUnmarshaller();
 		    biology = (Olimpiad) um.unmarshal(new FileReader(QUESTION_XML));
 		    
-		    Set <Task> newTask = biology.getTasks();
+		    Set <Task> newTask = biology.getTasksList();
 		    
 		    for (Task t : newTask) {
 		      System.out.println("Task: " + t.getId() + "  "
 		          + t.getDescription());
 		    }
-		    */
+	*/	    
 	}
 }
