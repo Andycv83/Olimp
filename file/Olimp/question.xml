@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<task>
-    <id>3</id>
-    <question>Third task for begginer wwwwwwwwww</question>
-</task>
+<olimpiad>
+    <id>0</id>
+    <name>Biology</name>
+    <task>
+        <question>2</question>
+        <description>2Second task for begginer</description>
+        <olimpId>0</olimpId>
+    </task>
+    <task>
+        <question>3</question>
+        <description>3Third task for begginer wwwwwwwwww</description>
+        <olimpId>0</olimpId>
+    </task>
+    <task>
+        <question>1</question>
+        <description>1First task for begginer </description>
+        <level>expert</level>
+        <olimpId>0</olimpId>
+    </task>
+</olimpiad>

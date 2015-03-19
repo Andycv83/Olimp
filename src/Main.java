@@ -3,16 +3,18 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.logging.Level;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.bind.annotation.XmlElement;
 
 
 public class Main {
 	
-	private static final String QUESTION_XML = "D:/workspace/Olimp/question.xml";
+	private static final String QUESTION_XML = "C:/Users/amendtc/workspace/Olimp/file/Olimp/question.xml";
 
 	public static void main(String[] args) throws JAXBException, FileNotFoundException {
 		// TODO Auto-generated method stub
@@ -22,40 +24,38 @@ public class Main {
 		
 		Olimpiad biology = new Olimpiad();
 		biology.setName("Biology");		
-		biology.setTasksList(newTasks);
+		
+		
 		
 		Task task1= new Task();		
 		task1.setId(1);
-		task1.setDescription("First task for begginer ");
+		task1.setDescription("1First task for begginer ");
 		newTasks.add(task1);
 		
 		Task task2= new Task();
-		task1.setId(2);
-		task1.setDescription("Second task for begginer");
+		task2.setId(2);
+		task2.setDescription("2Second task for begginer");
 		newTasks.add(task2);
 		
 		Task task3= new Task();
-		task1.setId(3);
-		task1.setDescription("Third task for begginer wwwwwwwwww");
+		task3.setId(3);
+		task3.setDescription("3Third task for begginer wwwwwwwwww");
 		newTasks.add(task3);
+				
+		biology.setTasksList(newTasks);
+
 		
-		if(new File(QUESTION_XML).exists()){
-			System.out.println("file question is present ");
-		}
-		else 
-			System.out.println("file not found");
-		
-		  JAXBContext context = JAXBContext.newInstance(Olimpiad.class);
+		JAXBContext context = JAXBContext.newInstance(Olimpiad.class);
 		    Marshaller marsh = context.createMarshaller();
 		    marsh.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 		    
 		    // Write to System.out
-		    marsh.marshal(biology, System.out);
+	        marsh.marshal(biology, System.out);
 
 		    // Write to File
-	//	    marsh.marshal(biology, new File(QUESTION_XML));
+		    marsh.marshal(biology, new File(QUESTION_XML));
 		    
-	/*	    System.out.println();
+		    System.out.println();
 		    System.out.println("Output from our XML File: ");
 		    Unmarshaller um = context.createUnmarshaller();
 		    biology = (Olimpiad) um.unmarshal(new FileReader(QUESTION_XML));
@@ -63,9 +63,10 @@ public class Main {
 		    Set <Task> newTask = biology.getTasksList();
 		    
 		    for (Task t : newTask) {
+	
 		      System.out.println("Task: " + t.getId() + "  "
 		          + t.getDescription());
 		    }
-	*/	    
+		    
 	}
 }

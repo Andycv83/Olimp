@@ -2,24 +2,30 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-//@XmlRootElement(name = "task")
+@XmlType(propOrder = {"id", "description", "level" , "olimpId"})
 
-//@XmlType(propOrder = {"id", "description", "level" , "olimpId",})
-
-
+@XmlRootElement
 public class Task {
-
-	enum Level {
-		beginer,
-		expert		
-	}; 
 
 	private int id;
 	private int olimpId;	
 	private String description;	
 	private Level level;
 	
-//	@XmlElement(name = "question")
+	enum Level {
+		beginer,
+		expert		
+	}; 
+	
+	
+	@XmlElement(name = "question")
+	
+	 public int getId() {
+		return id;
+	}
+	 public void setId(int id) {
+		this.id = id;
+	}
 	
 	public Level getLevel() {
 		return level;
@@ -34,12 +40,6 @@ public class Task {
 	}
 	 public void setDescription(String description) {
 		this.description = description;
-	}
-	 public int getId() {
-		return id;
-	}
-	 public void setId(int id) {
-		this.id = id;
 	}
 	 public int getOlimpId() {
 		return olimpId;
