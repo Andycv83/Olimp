@@ -23,7 +23,8 @@ public class Main {
 
 	public static void main(String[] args) throws JAXBException, FileNotFoundException, SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
 		// TODO Auto-generated method stub
-				
+		
+					
 		Set <Task> newTasks = new HashSet <Task>();
 		
 		Olimpiad biology = new Olimpiad();
@@ -48,19 +49,41 @@ public class Main {
 				
 		biology.setTasksList(newTasks);
 		
-		Class.forName("org.sqlite.JDBC").newInstance();
+				
+		DbService.updateTable("INSERT INTO Task (id,description) " + "VALUES (6,  'Task number 6' );");
 		
-		Connection conn = DriverManager.getConnection("jdbc:sqlite:C:/Users/Andrey/git/Olimp/file/Olimp/OlimpDB.db");
+/*		Class.forName("org.sqlite.JDBC").newInstance();
+		
+		Connection conn = DriverManager.getConnection("jdbc:sqlite:./file/Olimp/OlimpDB.db");
 		
 		Statement stmt = conn.createStatement();	
+	*/			
+//		stmt.execute("create table if not exists 'Task' ('id' int, 'description' text)");
 		
-		stmt.execute("create table if not exists 'Task' ('id' int, 'description' text)");
 		
-	      ResultSet rs = stmt.executeQuery("select * from Task");
+	//	 String sql = "INSERT INTO Task (id,description) " +
+    //             "VALUES (4,  'New task  for expert' );";
+	//	 String sql2= "DELETE from Task ;";
+		 
+	//	stmt.executeUpdate(sql);
+		 	
 		
-		conn.close();
-		stmt.close();
-		rs.close();
+/*	      ResultSet rs = stmt.executeQuery( "SELECT * FROM Task;" );
+	      while ( rs.next() ) {
+
+	    	  int id = rs.getInt("id");
+	         String  description = rs.getString("description");
+
+	         System.out.println( "ID = " + id );
+	         System.out.println( "NAME = " + description );
+	         
+	         System.out.println();
+	      }
+	      */
+	    //  rs.close();
+	//      stmt.close();
+//	      conn.close();
+		      
 
 	/*	
 		JAXBContext context = JAXBContext.newInstance(Olimpiad.class);
