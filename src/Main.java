@@ -1,6 +1,11 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.logging.Level;
@@ -14,11 +19,10 @@ import javax.xml.bind.annotation.XmlElement;
 
 public class Main {
 	
-	private static final String QUESTION_XML = "C:/Users/amendtc/workspace/Olimp/file/Olimp/question.xml";
+	private static final String QUESTION_XML = "./question.xml";
 
-	public static void main(String[] args) throws JAXBException, FileNotFoundException {
+	public static void main(String[] args) throws JAXBException, FileNotFoundException, SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
 		// TODO Auto-generated method stub
-
 				
 		Set <Task> newTasks = new HashSet <Task>();
 		
@@ -39,12 +43,26 @@ public class Main {
 		
 		Task task3= new Task();
 		task3.setId(3);
-		task3.setDescription("3Third task for begginer wwwwwwwwww");
+		task3.setDescription("3Third task for begginer");
 		newTasks.add(task3);
 				
 		biology.setTasksList(newTasks);
-
 		
+		Class.forName("org.sqlite.JDBC").newInstance();
+		
+		Connection conn = DriverManager.getConnection("jdbc:sqlite:C:/Users/Andrey/git/Olimp/file/Olimp/OlimpDB.db");
+		
+		Statement stmt = conn.createStatement();	
+		
+		stmt.execute("create table if not exists 'Task' ('id' int, 'description' text)");
+		
+	      ResultSet rs = stmt.executeQuery("select * from Task");
+		
+		conn.close();
+		stmt.close();
+		rs.close();
+
+	/*	
 		JAXBContext context = JAXBContext.newInstance(Olimpiad.class);
 		    Marshaller marsh = context.createMarshaller();
 		    marsh.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
@@ -67,6 +85,6 @@ public class Main {
 		      System.out.println("Task: " + t.getId() + "  "
 		          + t.getDescription());
 		    }
-		    
+		    */
 	}
 }
