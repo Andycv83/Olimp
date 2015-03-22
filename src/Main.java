@@ -23,15 +23,13 @@ public class Main {
 
 	public static void main(String[] args) throws JAXBException, FileNotFoundException, SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
 		// TODO Auto-generated method stub
-		
-					
+	
+		DbService db = new DbService();
 		Set <Task> newTasks = new HashSet <Task>();
 		
 		Olimpiad biology = new Olimpiad();
 		biology.setName("Biology");		
-		
-		
-		
+				
 		Task task1= new Task();		
 		task1.setId(1);
 		task1.setDescription("1First task for begginer ");
@@ -49,44 +47,12 @@ public class Main {
 				
 		biology.setTasksList(newTasks);
 		
+//		for (Task t : newTasks){
+//		db.createTask(t);
+//		}
 				
-		DbService.updateTable("INSERT INTO Task (id,description) " + "VALUES (6,  'Task number 6' );");
 		
-/*		Class.forName("org.sqlite.JDBC").newInstance();
-		
-		Connection conn = DriverManager.getConnection("jdbc:sqlite:./file/Olimp/OlimpDB.db");
-		
-		Statement stmt = conn.createStatement();	
-	*/			
-//		stmt.execute("create table if not exists 'Task' ('id' int, 'description' text)");
-		
-		
-	//	 String sql = "INSERT INTO Task (id,description) " +
-    //             "VALUES (4,  'New task  for expert' );";
-	//	 String sql2= "DELETE from Task ;";
-		 
-	//	stmt.executeUpdate(sql);
-		 	
-		
-/*	      ResultSet rs = stmt.executeQuery( "SELECT * FROM Task;" );
-	      while ( rs.next() ) {
-
-	    	  int id = rs.getInt("id");
-	         String  description = rs.getString("description");
-
-	         System.out.println( "ID = " + id );
-	         System.out.println( "NAME = " + description );
-	         
-	         System.out.println();
-	      }
-	      */
-	    //  rs.close();
-	//      stmt.close();
-//	      conn.close();
-		      
-
-	/*	
-		JAXBContext context = JAXBContext.newInstance(Olimpiad.class);
+/*		JAXBContext context = JAXBContext.newInstance(Olimpiad.class);
 		    Marshaller marsh = context.createMarshaller();
 		    marsh.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 		    
@@ -108,6 +74,6 @@ public class Main {
 		      System.out.println("Task: " + t.getId() + "  "
 		          + t.getDescription());
 		    }
-		    */
+		 */   
 	}
 }
