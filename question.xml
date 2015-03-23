@@ -3,18 +3,23 @@
     <id>0</id>
     <name>Biology</name>
     <task>
-        <question>3</question>
-        <description>3Third task for begginer</description>
-        <olimpId>0</olimpId>
-    </task>
-    <task>
         <question>1</question>
         <description>1First task for begginer </description>
         <olimpId>0</olimpId>
     </task>
     <task>
+        <question>3</question>
+        <description>3Third task for begginer</description>
+        <olimpId>0</olimpId>
+    </task>
+    <task>
+        <question>4</question>
+        <description>Test task</description>
+        <olimpId>0</olimpId>
+    </task>
+    <task>
         <question>2</question>
-        <description>2Second task for begginer</description>
+        <description>Second task for begginer</description>
         <olimpId>0</olimpId>
     </task>
 </olimpiad>

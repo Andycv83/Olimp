@@ -1,56 +1,59 @@
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
-import java.util.logging.Level;
-
-import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
-import javax.xml.bind.annotation.XmlElement;
 
 
 public class Main {
 	
-	private static final String QUESTION_XML = "./question.xml";
+	private static final String QUESTION_XML = "./file/Olimp/question.xml";
 
 	public static void main(String[] args) throws JAXBException, FileNotFoundException, SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
 		// TODO Auto-generated method stub
 	
 		DbService db = new DbService();
-		Set <Task> newTasks = new HashSet <Task>();
+		
+		Set <Task> taskCollection = new LinkedHashSet <Task>();
 		
 		Olimpiad biology = new Olimpiad();
 		biology.setName("Biology");		
 				
 		Task task1= new Task();		
 		task1.setId(1);
-		task1.setDescription("1First task for begginer ");
-		newTasks.add(task1);
+		task1.setDescription("First task for begginer");
+		taskCollection.add(task1);
 		
 		Task task2= new Task();
 		task2.setId(2);
-		task2.setDescription("2Second task for begginer");
-		newTasks.add(task2);
+		task2.setDescription("Second task for begginer");
+		taskCollection.add(task2);
 		
 		Task task3= new Task();
 		task3.setId(3);
-		task3.setDescription("3Third task for begginer");
-		newTasks.add(task3);
-				
-		biology.setTasksList(newTasks);
+		task3.setDescription("Third task for begginer");
+		taskCollection.add(task3);
 		
-//		for (Task t : newTasks){
-//		db.createTask(t);
-//		}
+		Task task4= new Task();
+		task4.setId(4);
+		task4.setDescription("Test task number four");
+		taskCollection.add(task4);
+		
+		Task task5= new Task();
+		task5.setId(5);
+		task5.setDescription("One more task # 5");
+		taskCollection.add(task5);
 				
+		biology.setTasksList(taskCollection);
+		
+		//db.deleteTask(task2);
+		//db.updateTask(task1);
+		
+		for(Task t : taskCollection){
+		//	db.deleteTask(t);
+			db.addTask(t);
+		}
+		
 		
 /*		JAXBContext context = JAXBContext.newInstance(Olimpiad.class);
 		    Marshaller marsh = context.createMarshaller();
@@ -66,14 +69,14 @@ public class Main {
 		    System.out.println("Output from our XML File: ");
 		    Unmarshaller um = context.createUnmarshaller();
 		    biology = (Olimpiad) um.unmarshal(new FileReader(QUESTION_XML));
-		    
+	    
 		    Set <Task> newTask = biology.getTasksList();
 		    
-		    for (Task t : newTask) {
+		    for (Task t : newTasks) {
 	
 		      System.out.println("Task: " + t.getId() + "  "
 		          + t.getDescription());
 		    }
-		 */   
+*/		    
 	}
 }

@@ -1,16 +1,11 @@
 import java.util.Date;
 import java.util.Set;
-
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+
 
 @XmlRootElement
 public class Olimpiad {
-	
-	  // XmLElementWrapper generates a wrapper element around XML representation
-//  @XmlElementWrapper(name = "TTTTTTTTTTTTTTTTTTTTTTTTTTT")
 	  	  
    private Set <Task> tasks ;  
 	private String name;
