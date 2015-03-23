@@ -18,41 +18,53 @@ public class Main {
 		
 		Olimpiad biology = new Olimpiad();
 		biology.setName("Biology");		
+		biology.setId(1);
 				
 		Task task1= new Task();		
 		task1.setId(1);
 		task1.setDescription("First task for begginer");
+		task1.setOlimpId(1);
 		taskCollection.add(task1);
 		
 		Task task2= new Task();
 		task2.setId(2);
 		task2.setDescription("Second task for begginer");
+		task2.setOlimpId(1);
 		taskCollection.add(task2);
 		
 		Task task3= new Task();
 		task3.setId(3);
 		task3.setDescription("Third task for begginer");
+		task3.setOlimpId(1);
 		taskCollection.add(task3);
 		
 		Task task4= new Task();
 		task4.setId(4);
 		task4.setDescription("Test task number four");
+		task4.setOlimpId(1);
 		taskCollection.add(task4);
 		
 		Task task5= new Task();
 		task5.setId(5);
 		task5.setDescription("One more task # 5");
+		task5.setOlimpId(1);
 		taskCollection.add(task5);
 				
 		biology.setTasksList(taskCollection);
 		
 		//db.deleteTask(task2);
 		//db.updateTask(task1);
+		db.getAllTasks(2);
 		
 		for(Task t : taskCollection){
-		//	db.deleteTask(t);
-			db.addTask(t);
+//			db.deleteTask(t);
+	//		db.addTask(t);
+			//db.getAllTasks(t);
+			
 		}
+		
+		
+	//	db.createTable("create table TASK"+ " (Id int , olimpId int ,  Description text)");
 		
 		
 /*		JAXBContext context = JAXBContext.newInstance(Olimpiad.class);
