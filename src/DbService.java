@@ -13,21 +13,7 @@ public class DbService {
 	public void addTask(Task task){
 
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("insert into TASK (ID, olimpId , Description) values (?, ?, ? )");
-            preparedStatement.setInt(1, task.getId());
-            preparedStatement.setInt(2, task.getOlimpId());
-            preparedStatement.setString(4, task.getDescription());
-            preparedStatement.executeUpdate();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-	} 
-	
-	
-	public void updateTask(Task task) throws SQLException{
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement("update task set id=?, olimpId=?, description=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into TASK (Id, olimpId , Description) values (?, ?, ? )");
             preparedStatement.setInt(1, task.getId());
             preparedStatement.setInt(2, task.getOlimpId());
             preparedStatement.setString(3, task.getDescription());
@@ -36,7 +22,21 @@ public class DbService {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-	}
+	} 
+	
+	
+		public void updateTask(Task task){
+	        try {
+	            PreparedStatement preparedStatement = connection.prepareStatement("update TASK set olimpId=?, description=?"+" where Id =?");
+	            preparedStatement.setInt(1, task.getOlimpId());
+	            preparedStatement.setString(2, task.getDescription());
+	            preparedStatement.setInt(3, task.getId());
+	            preparedStatement.executeUpdate();
+
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+		}
 	
 	
 	public void deleteTask(int id) throws SQLException{

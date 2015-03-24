@@ -28,7 +28,7 @@ public class Main {
 				
 		Task task1= new Task();		
 		task1.setId(1);
-		task1.setDescription("First task for begginer");
+		task1.setDescription("First task for begginer First task for begginer");
 		task1.setOlimpId(1);
 		taskCollection.add(task1);
 		
@@ -58,7 +58,9 @@ public class Main {
 				
 		biology.setTasksList(taskCollection);
 		
-		db.updateTask(task3);
+		for (Task task :taskCollection ){
+			db.addTask(task);
+		}
 		
 /*	JAXBContext context = JAXBContext.newInstance(Olimpiad.class);
 		    Marshaller marsh = context.createMarshaller();
