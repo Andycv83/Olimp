@@ -1,59 +1,107 @@
 import java.sql.*;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class DbService {
+		
+	private Connection connection;
+
+    public DbService() {
+        connection = connectDB.getConnection();
+    }
 	
-	public void addTask(Task task) throws SQLException{
-		String sql = "INSERT INTO TASK (ID, olimpId , Description) " +  "VALUES (" +task.getId()+","+ 
-					task.getOlimpId()+" ,'"+ task.getDescription() + "');";	
-		executeSQL(sql);
-	}   
+	public void addTask(Task task){
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into TASK (ID, olimpId , Description) values (?, ?, ? )");
+            preparedStatement.setInt(1, task.getId());
+            preparedStatement.setInt(2, task.getOlimpId());
+            preparedStatement.setString(4, task.getDescription());
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+	} 
+	
 	
 	public void updateTask(Task task) throws SQLException{
-		String sql = "UPDATE TASK set Description = '"+ task.getDescription()+"' where ID=" +task.getId()+";";	
-		executeSQL(sql);
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("update task set id=?, olimpId=?, description=?");
+            preparedStatement.setInt(1, task.getId());
+            preparedStatement.setInt(2, task.getOlimpId());
+            preparedStatement.setString(3, task.getDescription());
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 	}
 	
-	public void deleteTask(Task task) throws SQLException{
-		String sql = "DELETE from TASK where ID=" +task.getId()+";";	
-		executeSQL(sql);
+	
+	public void deleteTask(int id) throws SQLException{
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("delete from TASK where id=?");
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }	
 	}
 	
-	public void createTable(String sql) throws SQLException{
-		executeSQL(sql);
-	}
 	
-	public void getAllTasks(int olimpId) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException{
-		
-		String sql = "SELECT * From TASK where olimpId = "  + olimpId +";";
+     public Set<Task> getAllTask() {
+		    	Set<Task> tasks = new LinkedHashSet <Task>();
+		        try {
+		            Statement statement = connection.createStatement();
+		            ResultSet rs = statement.executeQuery("select * from TASK");
+		            while (rs.next()) {
+		                Task task = new Task();
+		                task.setId(rs.getInt("id"));
+		                task.setOlimpId(rs.getInt("olimpId"));
+		                task.setDescription(rs.getString("description"));
+		                tasks.add(task);
+		            }
+		        } catch (SQLException e) {
+		            e.printStackTrace();
+		        }
+
+		        return tasks;
+		    }
 	
-		Class.forName("org.sqlite.JDBC").newInstance();	
-		Connection connection = DriverManager.getConnection("jdbc:sqlite:./file/Olimp/OlimpDB.db");
-		Statement stmt = connection.createStatement();	
-		
-		ResultSet rs = stmt.executeQuery(sql);
-			while(rs.next()){
-	        	int id = rs.getInt("id");
-	        	String  descr = rs.getString("Description");         
-	         System.out.print( "ID =  " + id );
-	         System.out.print("  Description : " + descr);
-	         System.out.println();
-			}
-	}     
-		
-	private void executeSQL(String sql) throws SQLException{
-		
-		try{
-			Class.forName("org.sqlite.JDBC").newInstance();		
-			Connection connection = DriverManager.getConnection("jdbc:sqlite:./file/Olimp/OlimpDB.db");
-			Statement stmt = connection.createStatement();	
-			stmt.executeUpdate(sql);
-			stmt.close();
-			connection.close();
-	//		
-		}
-		 catch (Exception e){
-		}
-		
-	}
+     public Task getTaskById(int id) {
+         Task task = new Task();
+         try {
+             PreparedStatement preparedStatement = connection.prepareStatement("select * from TASK where id=?");
+             preparedStatement.setInt(1, id);
+             ResultSet rs = preparedStatement.executeQuery();
+
+             if (rs.next()) {
+	                task.setId(rs.getInt("id"));
+	                task.setOlimpId(rs.getInt("olimpId"));
+	                task.setDescription(rs.getString("description"));
+             }
+         } catch (SQLException e) {
+             e.printStackTrace();
+         }
+
+         return task;
+     }
+     
+ 	public void addOlimpiad(Olimpiad olimpiad){
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into Olimpiad (id, name , start, end) values (?, ?, ?, ? )");
+            preparedStatement.setInt(1, olimpiad.getId());
+            preparedStatement.setString(2, olimpiad.getName());
+            preparedStatement.setDate(3, new java.sql.Date(olimpiad.getStart().getTime()));
+            preparedStatement.setDate(4, new java.sql.Date(olimpiad.getEnd().getTime()));
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+	} 
 		
 }

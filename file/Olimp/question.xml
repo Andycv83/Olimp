@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <olimpiad>
-    <id>0</id>
+    <id>1</id>
     <name>Biology</name>
     <task>
-        <question>5</question>
-        <description>One more task</description>
-        <olimpId>0</olimpId>
-    </task>
-    <task>
         <question>1</question>
-        <description>1First task for begginer </description>
-        <olimpId>0</olimpId>
+        <description>First task for begginer</description>
+        <olimpId>1</olimpId>
     </task>
     <task>
         <question>2</question>
         <description>Second task for begginer</description>
-        <olimpId>0</olimpId>
+        <olimpId>1</olimpId>
     </task>
     <task>
         <question>3</question>
-        <description>3Third task for begginer</description>
-        <olimpId>0</olimpId>
+        <description>Third task for begginer</description>
+        <olimpId>1</olimpId>
     </task>
     <task>
         <question>4</question>
-        <description>Test task</description>
-        <olimpId>0</olimpId>
+        <description>Test task number four</description>
+        <olimpId>1</olimpId>
+    </task>
+    <task>
+        <question>5</question>
+        <description>One more task # 5</description>
+        <olimpId>1</olimpId>
     </task>
 </olimpiad>

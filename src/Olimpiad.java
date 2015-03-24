@@ -7,11 +7,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Olimpiad {
 	  	  
-   private Set <Task> tasks ;  
+   private Set <Task> tasks ;
+	private int id;
 	private String name;
 	private Date start;
 	private Date end;
-	private int id;
 	
 	public String getName() {
 		return name;
